@@ -1,0 +1,65 @@
+% This format is developed by Md. Shopon, Lecturer, Department of CSE, UAP. If you face any problem regarding this format email me , shopon@uap-bd.edu . Thank You 
+
+
+\documentclass[a4paper,12pt,oneside]{report}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+
+\include{thesis.preamble}
+
+
+\begin{document}
+
+\title{\LARGE {\bf Your Title Goes Here}\\
+ \vspace*{4mm}
+}
+
+\author{Submitted By\\
+Thesis Partner 1    -     ID
+\\Thesis Partner 2 - ID  \linebreak  
+\linebreak 
+-
+\linebreak  
+\linebreak Supervised By\\ Supervisor Name \\ Affiliation
+}
+\submitdate{March 2019(Change Accordingly)}
+
+\normallinespacing
+
+
+\let\cleardoublepage\clearpage
+
+\maketitle
+
+\preface
+
+\let\cleardoublepage\clearpage
+\input{declaration/declaration}
+\input{acknowledgements/acknowledgements}
+\clearpage
+\input{abstract/abstract}
+\let\cleardoublepage\clearpage
+
+\let\cleardoublepage\clearpage
+% \input{quotes/quotes}
+
+\body
+\input{chap1/introduction}
+\input{chap2/Background.tex}
+% Create Another Folder and add a tex file there and add that text file just like shown above 
+
+
+% \input{background/background}
+
+% body of thesis comes here
+
+% \input{conclusion/conclusion}
+
+% \appendix
+% appendices come here
+
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{Bib/bib}{}
+\bibliographystyle{ieeetr}
+
+\end{document}
