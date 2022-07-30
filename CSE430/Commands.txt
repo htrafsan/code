@@ -1,0 +1,11 @@
+1. sudo apt-get update
+2. sudo apt-get upgrade
+3. sudo apt-get install flex
+4. sudo apt-get install bison
+5. sudo apt-get install bison++
+6. sudo apt-get install byacc
+
+To run a flex file use these commands:
+1. flex filename.l
+2. cc lex.yy.c -lfl
+3. ./a.out
