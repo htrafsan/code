@@ -1,1 +1,0 @@
-# OpenGL -- Computer-Graphics-Projects
