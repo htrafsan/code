@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1633149243 source:d:\faculty documents\university of asia pacific\cse 432 - computer graphics lab\lab codes\line clipping a2\main.cpp
+	<stdio.h>
+
+1341006776 c:\program files (x86)\codeblocks\mingw\include\stdio.h
+	<_mingw.h>
+	<stddef.h>
+	<stdarg.h>
+	<sys/types.h>
+
+1341006770 c:\program files (x86)\codeblocks\mingw\include\_mingw.h
+
+1341006780 c:\program files (x86)\codeblocks\mingw\include\sys\types.h
+	<_mingw.h>
+	<stddef.h>
+
+1633497267 source:d:\faculty documents\university of asia pacific\cse 426 - computer graphics lab\lab codes\line clipping a2\main.cpp
+	<stdio.h>
+
