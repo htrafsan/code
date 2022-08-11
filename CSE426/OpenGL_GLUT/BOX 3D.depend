@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1561834947 source:d:\university of asia pacific - uap\cse 432 - computer graphics lab\lab codes\box 3d\main.c
+	<windows.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<stdio.h>
+
