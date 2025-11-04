@@ -16,7 +16,7 @@ code | rafsan
     CSE 204 	Object Oriented Programming I: Java Lab
     CSE 205 	Data Structures
     CSE 206 	Data Structures Lab
-    CSE 207	        Algorithms
+    CSE 207	    Algorithms
     CSE 208 	Algorithms Lab
     CSE 209 	Digital Logic & System Design
     CSE 210 	Digital Logic & System Design Lab
@@ -35,13 +35,13 @@ code | rafsan
     CSE 314 	Numerical Methods Lab
     CSE 315 	Peripheral & Interfacing	
     CSE 316 	Peripheral & Interfacing Lab
-    CSE 317	        Computer Architecture
+    CSE 317	    Computer Architecture
     CSE 319 	Computer Networks
     CSE 320 	Computer Networks Lab
     CSE 321 	Software Engineering
     CSE 322 	Software Engineering Lab
     CSE 330 	Industrial Training
-    CSE 400	        Project / Thesis
+    CSE 400	    Project / Thesis
     CSE 401 	Mathematics for computer Science
     CSE 403 	Artificial Intelligence and Expert Systems
     CSE 404 	Artificial Intelligence and Expert Systems Lab
@@ -64,14 +64,14 @@ code | rafsan
     HSS 101 	English I: Written and Spoken English
     HSS 111 (A)	Bangladesh Studies: Society and Culture
     HSS 111 (B)	Bangladesh Studies: Bangladesh History
-    HSS 301	        English II: English for Communications
+    HSS 301	    English II: English for Communications
     MTH 101 	Math I: Basic Calculus, Co-ordinate Geometry
     MTH 103 	Math II: Linear Algebra
     MTH 201 	Math III: Multivariable Calculus
     MTH 203 	Probability & Statistics
     MTH 205 	Math IV: Differential Equations and Fourier and Laplace Transformations
     PHY 101 	Physics
-    PHY 102	        Physics Lab
+    PHY 102	    Physics Lab
 ---
 
     CSE 411		Mobile Communications
