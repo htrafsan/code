@@ -1,0 +1,331 @@
+\documentclass[reqno,12pt,oneside]{report} % right-side equation numbering, 12 point font, print one-sided
+%\documentclass[reqno,12pt,twoside,openright]{report} % right-side equation numbering, 12 point font, print two-sided, Chapters start on odd pages. Rackham only accepts one-sided, so this is for personal printings.
+
+\usepackage{rac}         % Use Rackham thesis style file
+%\usepackage{aas_macros}  % To allow the reading of ADS journal references in the bibliography
+\usepackage[intlimits]{amsmath} % Puts the limits of integrals on top and bottom
+\usepackage{amsxtra}     % Use various AMS packages
+
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}    % Add some packages for figures. Read epslatex.pdf on ctan.tug.org
+
+\usepackage{rotating}
+\usepackage{color}
+\usepackage{xspace}
+\usepackage{mdframed}
+\usepackage{epsfig}
+\usepackage{subfigure}   % To make subfigures. Read subfigure.pdf on ctan.tug.org
+\usepackage{multirow}
+
+\usepackage{verbatim}
+\usepackage[numbers]{natbib}      % Allows you to use BibTeX
+\usepackage{acronym} % For the List of Abbreviations. Read acronym.pdf on ctan.tug.org
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[options ]{algorithm2e}
+\usepackage{algpseudocode}
+\usepackage{ifthen}
+%\usepackage{mathptmx} 
+%\usepackage[acronym]{glossaries}
+%\usepackage{nomencl}
+%\usepackage[noend]{algpseudocode}
+%\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+
+\usepackage[intoc]{nomencl}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\usepackage{url}
+%\usepackage{breakurl}
+%\usepackage[breaklinks]{hyperref}
+% \usepackage{hyperref}
+ 
+ \usepackage{algorithm,algpseudocode}
+
+
+%\usepackage[latin1]{inputenc}
+%\usetikzlibrary{shapes,arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+%%%<
+
+
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\renewcommand\bibname{References}
+
+\makenomenclature
+%\makenomenclature
+  % Allows you to specify the line spacing
+%\doublespacing
+\onehalfspacing %for 1.5 spacing, %\doublespacing for 2.0 spacing.
+\newcommand{\sun}{\ensuremath{\odot}} % sun symbol is \sun
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Various theorem environments. All of the following have the same numbering
+% system as theorem.
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{introduction}[theorem]{Introduction}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\numberwithin{theorem}{chapter}     % Numbers theorems "x.y" where x
+                                    % is the section number, y is the
+                                    % theorem number
+
+%\renewcommand{\thetheorem}{\arabic{chapter}.\arabic{theorem}}
+
+%\makeatletter                      % This sequence of commands will
+%\let\c@equation\c@theorem          % incorporate equation numbering
+%\makeatother                       % into the theorem numbering scheme
+
+%\renewcommand{\theenumi}{(\roman{enumi})}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% If printing two-sided, this makes sure that any blank page at the
+% end of a chapter will not have a page number.
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%This command creates a box marked ``To Do'' around text.
+%To use type \todo{  insert text here  }.
+
+\newcommand{\todo}[1]{\vspace{5 mm}\par \noindent
+\marginpar{\textsc{To Do}}
+\framebox{\begin{minipage}[c]{0.95 \textwidth}
+\tt\begin{center} #1 \end{center}\end{minipage}}\vspace{5 mm}\par}
+
+
+
+\begin{document}
+%\bibliographystyle{ieeetr}
+%\bibliographystyle{plain}    % Set the bibliography style. agu04, plain, alpha, etc.
+% Title page as required by Rackham dissertation guidelines
+\titlepage{A Convolutional Neural Network Based Human Expression Analysis using Jahangirnagar University dataset}{ 152395}{Professional Masters in Information Technology}
+{Information Technology}{December 2020}
+{Dr. M Shamim Kaiser, Professor}
+
+% Begin the front matter as required by Rackham dissertation guidelines
+\initializefrontsections
+
+% Optional Frontispiece
+%\frontispiece{\includegraphics[width=6in]{Intro/Happy} Find a cool picture to go here.}
+
+% Optional, but recommended, Copyright page
+%\copyrightpage{Your Name}
+
+% Page numbering. If you don't include a frontispiece or copyright page, you'll need to change this for two-sided printing.
+\makeatletter
+\if@twoside \setcounter{page}{4} \else \setcounter{page}{1} \fi
+\makeatother
+
+% Optional Dedication page
+%\dedicationpage{To Our Beloved Parents}
+
+
+%Optional declaration page
+\startdeclarationpage
+\input{FrontMatter/declaration}
+\label{declaration}
+
+
+%Optional Certificate page
+\startcertificatepage
+\input{FrontMatter/certificate}
+\label{Certificate}
+
+
+
+% Optional Acknowledgements page
+\startacknowledgementspage
+\input{FrontMatter/Acknowledgements}
+\label{Acknowledgements}
+
+%Optional Abstract page
+\startabstractpage
+\input{Abstract/Abstract}
+\label{Abstract}
+
+
+
+
+% List of Abbreviation
+
+\listofabbreviations % Optional. Abbreviations should be stored in a file named abbr.tex
+% Optional in-dissertation Abstract Page
+%\startabstractpage
+%{The Title of Your Dissertation}{Your Name}{Chair: Albert Einstein}
+%\input{Abstract/Abstract}
+%\label{Abstract}
+
+\section*{
+\begin{center}
+  LIST OF ABBREVIATIONS
+\end{center}
+}
+
+\begin{tabular}{p{2.5cm}p{10cm}}
+%\textbf{\symbab}  & \symbac\\
+\textbf{IIT}  & Institute of Information Technology\\
+\textbf{JU}  & Jahangirnagar University \\
+\textbf{IIT}  & Institute of Information Technology \\
+\textbf{IIT}  & Institute of Information Technology \\ 
+% double back slash refers to newline
+\textbf{QoS}  & Quality of Service \\
+
+\end{tabular}
+
+
+
+% List of Notatoin
+\listofnotations
+\section*{
+\begin{center}
+ LIST OF NOTATIONS
+\end{center}
+}
+
+
+\begin{tabular}{p{2.5cm}p{10cm}}
+%\textbf{\symbab}  & \symbac\\
+$\alpha$  & Define alpha\\
+$\max$  & maximum\\
+$\cos{\theta}$ & maximum\\
+$x$ & maximum\\ % for equation mode use $$; & next column
+
+\end{tabular}
+
+%\input{Preface}
+%\label{Preface}
+% Table of contents, list of figures, etc.
+\listoffigures   % Required if there is more than one figure
+\listoftables        % Required if there is more than one table
+\tableofcontents     % Required
+
+%\startprefacepage
+\printnomenclature[1.5cm]
+
+%%%%%%%%%%%%%%%%%%%\printnomenclature
+%\clearpage
+
+
+
+%\renewcommand{\arraystretch}{1.70}
+%\begin{tabular}{p{2.5cm}p{10cm}}
+%\centering
+  %\rule{3.5cm}{1pt} & \rule{3.5cm}{1pt} & \rule{3.5cm}{1pt}\\
+%  $\alpha$ & Define Alpha\\
+%$\symba $ & \symbb\\
+%$\symbc $ & \symbd\\
+%$\symbe $ & \symbf\\
+%$\symbg $ & \symbh\\
+%$\symbi $ & \symbj\\
+%$\symbk $ & \symbl\\
+%$\symbm $ & \symbn\\
+%$\symbo $ & \symbp\\
+%$\symbq $ & \symbr\\
+%$\symbs $ & \symbt\\
+%$\symbu $ & \symbv\\
+%$\symbw $ & \symbx\\
+%\end{tabular}
+%\newpage
+%\begin{tabular}{p{2.5cm}p{10cm}}
+
+
+
+
+
+
+
+
+
+%\listofmaps          % Required if there is more than one map
+%\listofappendices    % Required if there is more than one appendix
+%%%%--------------------------------------------------------------------------------
+\startthechapters
+% The individual files for each of the chapters are put here.
+% Save each chapter of your thesis to a seperate tex file
+% and then use the \input command to include this file in your
+% thesis.  For instance you can save a file to "intro.tex" and
+% then type \input{intro}.
+
+ %\chapter{Introduction}
+ \label{chap:Intro}
+ \input{Chap1/Chapter1}
+
+
+
+
+% \chapter{Literature Survey}
+ \input{Chap2/Chapter2}
+
+
+%\chapter{System Model}
+ \input{Chap3/Chapter3}
+
+
+
+%\chapter{Simulation Results and Discussion}
+\input{Chap4/Chapter4}
+
+%Chapter{Performance Analysis}
+\input{Chap5/Chapter5.tex}
+
+
+%\chapter{Conclusion and Future Work}
+\input{Chap6/Chapter6.tex}
+% \label{chap:conclusion}
+% \input{Chap5/Chapter5}
+
+%\startbibliography
+ %\begin{singlespace} % Bibliography must be single spaced
+%\bibliography{References}   % Use the BibTeX file ``References.bib''.
+%\end{singlespace}
+%%\setlinespacing{1.44}
+\bibliographystyle{ieeetr}
+%\bibliography{xbib}
+% An external Abstract that can be printed at the end of the document,
+% for separate submission to Rackham. Comment it out when not needed. - jg
+%\startextabstractpage
+%{The Title of Your Dissertation}{Your Name}{Chair: Albert Einstein}
+%\input{Abstract/Abstract}
+%\label{ExtAbstract}
+
+%\bibliographystyle{alpha}
+%\bibliographystyle{alpha}
+\bibliography{bibfile}
+
+\end{document}

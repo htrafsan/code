@@ -1,0 +1,130 @@
+\chapter{Proposed scheme}
+Considering the energy constraint and reliability issues of acoustic communication, in this research,  we propose an energy efficient, reliable, cluster based adaptive MAC protocol (ERCAMAC) that  unicasts data packet to the intended receiver without collision of control and data packets. The protocol can adaptively change its sleeping and working period based on traffic load which will substantially reduce energy waste and fairness problem. Furthermore, it removes the exposed terminal problem of CSMA/CA.
+
+Since MAC protocol do not maintain any link state information, we will assume that an efficient routing protocol is working with it. In our proposed protocol, the time frame of cluster head is divided into two broad parts: one part is reserved for receiving data from nodes within cluster and another part is dedicated to communicate with another cluster heads in the network. During inter cluster communication period, the nodes in a cluster except the cluster head remain in sleep mode. Cluster head serves like a gateway to accomplish data forwarding towards the sink. Each part of the time frame is subdivided into scheduling period, working period, acknowledgement period and sleeping period. Scheduling period is fixed. Others period can change adaptively with traffic load. As shown in figure \ref{21} Schedule period within cluster's node consists of $n$ timeslots to receive RTS (where, $n$ is a number of nodes within cluster) one timeslot to send CTS. Scheduling among cluster heads period consists of $k$ RTS timeslots ($k$ is a number of cluster heads in the network) and one CTS time slot. There is a one to one relationship between scheduling period RTS timeslots and nodes. The ERCAMAC protocol for intra cluster node and cluster head is given in algorithm \ref{ag2} and \ref{ag1} respectively
+
+\begin{algorithm}[ht!]
+ \caption{ERCAMAC protocol for intracluster nodes}
+ \label{ag2}
+  Notations:
+  $N_i$ = intracluster node $i$; $T_{D(i)}$ = data period reserved for $i$; $T_{RTS(i)}$ = $RTS$ timeslot reserved for $i$\\; $T$ = time slot\\
+   \SetAlgoLined
+   \KwData{$RTS$, $DATA$}
+   \KwResult{$CTS$, $ACK$}
+   Initialization; \\
+   \While{intra cluster period}{
+            \eIf{$N_i$ has data to send to cluster head}{
+             Wake up\\
+             Send $RTS$ at $T_{RTS(i)}$\\
+             sleep until $T_{CTS}$\\
+             \eIf{$T==T_{CTS}$}{
+                  receives $CTS$\\
+                  extracts $T_{D(i)}$\\
+                  sleep until $T_{D(i)}$
+                  }
+                  {sleep
+                  }
+             \eIf{$T==T_{D(i)}$}{
+                  sends data\\
+                  sleep until $T_{ACK}$\\
+                  }
+                  { sleep
+                  }
+             \eIf{$T==T_{ACK}$}{
+                  receives ACK from cluster head
+                  }
+                  { sleep
+                  }
+             %receive acknowledgement and sleep until next timeframe
+             }
+             { sleep
+             }
+           }
+          %}
+  \While{inter cluster period}{
+        \eIf{receives wakeup signal from cluster head}{
+            \eIf{data to send}{
+            performs contention to get timeslot \\
+            \eIf{receive CTS}{
+            sends data to cluster head
+            }{
+            sleep
+            }
+            }{
+            sleep
+            }
+         }{
+         sleep
+         }
+   }
+
+\end{algorithm}
+\begin{algorithm}[ht!]
+Notation: $Pktno$ = packet number; $T_{sc}$ = scheduling period; $T_{w}$ = working period; $T_{ACK}$ = ACK period; Initialization; \\
+ \While{intra cluster period}{
+   \eIf{$T==T_{sc}$}{
+        receives $RTS$ from each intracluster node that has data to send during RTS period;\\
+        examines $RTS$ data sequence to estimate traffic load;\\
+        divides working period according to $RTS$;\\
+        multicasts $CTS$ at $T_{CTS}$ including each node's timeslot from which it has received $RTS$;\\
+        }{
+        \eIf{$T==T_w$}{
+          \For{each node $N_i$ that receives $CTS$; }{
+        receives $DATA$ at $T_{D(i)}$ from $N_i$;\\}
+        }{
+          \eIf{$T==T_{ACK}$}{
+           checks receives data sequence number with corresponding $RTS$ data sequence; \\
+             \eIf{receives all data}{
+                   multicasts acknowledgement to intra cluster nodes ;
+                   }{sends $Pktno$ to missing data nodes; }
+           }{sleep;
+              }
+          }
+         }
+   }
+   \While{inter cluster period}{
+       \eIf{data to send}{
+              sends data using the same procedure of ERCAMAC protocol intracluster period for intracluster nodes;
+                  }{broadcasts wakeup tone to intracluster nodes; \\
+                    \eIf{receives $RTS$ from intracluster nodes}
+                    {sends $CTS$ and receives data; }
+                    {sleep}
+          }
+%
+
+   }
+ \caption{ERCAMAC protocol for cluster head}
+ \label{ag1}
+\end{algorithm}
+
+%\begin{enumerate}
+% \item Nodes within a cluster (that have data to send) will send RTS packet during its fixed timeslot to their cluster head. RTS packet contains sender address, receiver address and sequence number of data packet. Cluster head will calculate timeslot for the nodes from which it has received RTS. The duration of data timeslot is different for different node. Duration of data timeslot depends on traffic rate. Cluster head will multicast one CTS containing the schedule that indicates the timeslots assigned for each node from which cluster head has received RTS
+%
+%\item Each node will send data at his assigned time slot. After sending data it will go to sleep mode and wake up at acknowledgement period to receive acknowledgement.
+%
+%\item In acknowledgement period cluster head compares the sequence number mentioned in RTS with the received sequence number. If any packet is missing it will mention data sequence number in a warning packet and send it to the data sender. The sender retransmits the missing packet to the cluster head. After receiving all packets cluster head will  broadcast ACK packet.
+%
+%\item Cluster head aggregates the packets received from nodes within the cluster and send it to the next intended cluster head following the same procedure described at step 1-3.
+%
+%\item If cluster head has no data to send in the inter cluster communication period, it can share this time with intra cluster node by sending a wake up signal to the nodes. Nodes within cluster can use this period using contention mechanism to send data.
+%\end{enumerate}
+\begin{figure}[ht!]
+   \centering
+   \includegraphics[width=3.6in,height=1.6in]{time}
+   \caption{Time frame of cluster head}
+   \label{21}
+\end{figure}
+ To understand the data communication process of ERCAMAC we can consider the scenario of (fig \ref{22}). In the scenario, node  $N1$ and $N3$ has data to send to $CH1$. $N2$ and $N4$ has no data, so they will remain in sleep mode. $CH1$ will receive RTS from $N1$ and $N2$ in the reserved $ RTS$ timeslots of them. Time slot reserved for $N2$ and $N4$ in the scheduling period will be empty. Then, $CH1$ will divide its data communication period into two timeslots. Since $N1$ has more data than $N3$, timeslot for $N1>$ timeslot for $N3$. $CH1$ will multicast one CTS that contains the schedule assigned for $N1$ and $N3$. After receiving the CTS,  data sending nodes will send data during their respective timeslot and go to sleep mode until the acknowledgement period. After receiving data successfully, $CH1$ sends acknowledgement to the sender of data. In inter cluster communication period $CH1$ will aggregate the data received from intra cluster nodes and forward them to $CH2$ following the same RTS-CTS-DATA-ACK mechanism. The whole procedure of data communication is depicted in figure \ref{23}
+\begin{figure}[ht!]
+   \centering
+   \includegraphics[width=3in,height=2in]{cluster}
+   \caption{Simplified network scenario}
+   \label{22}
+\end{figure}
+\begin{figure*}[ht!]
+   \centering
+   \includegraphics[width=6in]{data}
+   \caption{ERCAMAC data communication mechanism}
+   \label{23}
+\end{figure*}
+
