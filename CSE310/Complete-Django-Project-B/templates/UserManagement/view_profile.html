@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <img src="{{ profile.profile_picture.url }}">
+
+    {{ profile.contact_no }}
+
+{% endblock content %}

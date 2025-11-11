@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="card-columns">
+
+    {% for s in students %}
+
+        <div class="card">
+            <img class="card-img-top" src="../../media/images/logo/Car-Wheel.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ s.id }}</h5>
+              <p class="card-text">
+                  Name: {{ s.name }} <br>
+                  Contact No:  {{ s.contact_no }} <br>
+                  Advisor: {{ s.advisor }} <br>
+
+
+              </p>
+            </div>
+          </div>
+
+
+    {% endfor %}
+
+    </div>
+
+{% endblock content %}
+
+
